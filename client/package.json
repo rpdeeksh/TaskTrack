@@ -1,0 +1,40 @@
+{
+    "name": "task-manager",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "proxy": "http://localhost:5000",
+    "dependencies": {
+        "axios": "^1.9.0",
+        "mongoose": "^8.15.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3"
+    },
+    "scripts": {
+        "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+        "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.3"
+    }
+}

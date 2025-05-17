@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .column {
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .column h2 {
+    text-align: center;
+  }
+  
+  .task {
+    background-color: #e3e3e3;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .task.dragging {
+    opacity: 0.5;
+  }
+  
+  .task-form {
+    margin-top: 20px;
+  }
+  
+  .task-form input, .task-form select {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .task-form button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .task-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .app-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  color: #555;
+  font-size: 14px;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+.app-footer a {
+  color: #0077b5;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
