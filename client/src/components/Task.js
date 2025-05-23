@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEditingStatus }) => {
   const [dragging, setDragging] = useState(false);
@@ -23,12 +24,17 @@ const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEdi
     return () => {
       window.removeEventListener('keydown', handleEscKey);
     };
-  }, [isEditing]);
-
-  // Update parent component with editing status
+  }, [isEditing]);  // Update parent component with editing status
   useEffect(() => {
     if (setEditingStatus) {
       setEditingStatus(isEditing);
+    }
+    
+    // Simply add/remove modal-open class
+    if (isEditing) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
     }
   }, [isEditing, setEditingStatus]);
 
@@ -67,9 +73,7 @@ const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEdi
     if (parseInt(task.progress) >= 75) return "var(--completed-color)";
     if (parseInt(task.progress) >= 25) return "var(--progress-color)";
     return "var(--todo-color)";
-  };
-
-  const handleEdit = () => {
+  };  const handleEdit = () => {
     setIsEditing(true);
   };
 
@@ -77,7 +81,7 @@ const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEdi
     setIsEditing(false);
     setEditedTask({ ...task }); // Reset to original task data
   };
-
+  
   const handleSaveEdit = () => {
     // Validate required fields
     if (!editedTask.title || !editedTask.subject || !editedTask.deadline) {
@@ -168,9 +172,7 @@ const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEdi
           <i className="far fa-calendar-alt"></i>
           <span>{formatDate(task.deadline)}</span>
         </div>
-      </div>
-
-      {isEditing && (
+      </div>      {isEditing && createPortal(
         <div className="modal-overlay">
           <div className="modal-content">
             <div className="modal-header">
@@ -248,10 +250,10 @@ const Task = ({ task, moveTask, updateTask, deleteTask, isAnyTaskEditing, setEdi
                 <button onClick={handleCancelEdit} className="cancel-button">
                   <i className="fas fa-times"></i> Cancel
                 </button>
-              </div>
-            </div>
+              </div>            </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

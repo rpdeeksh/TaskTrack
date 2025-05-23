@@ -74,9 +74,8 @@ const TaskForm = ({ addTask }) => {
       <div id="task-added-message" className="success-message">
         <i className="fas fa-check-circle"></i> Task added successfully!
       </div>
-      
-      <div className="task-form-content">
-        <form onSubmit={handleSubmit} className="animated-form">
+        <div className="task-form-content">
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-group">
               <label htmlFor="task-title">
